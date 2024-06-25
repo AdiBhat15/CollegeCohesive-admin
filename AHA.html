@@ -1,145 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/2022dd499d.js" crossorigin="anonymous"></script>
+  <style>
+    h1 {
+      color: #596275;
+    }
+  </style>
 </head>
+
 <body>
-    <div id="name">
-        <h1>Academic Honors and Achievements </h1>
+  <div class="container mx-auto py-8">
+    <div id="name" class="text-center mb-8">
+      <h1 class="text-3xl font-bold">Academic Honors and Achievements</h1>
     </div>
+    <div class="mb-4 flex justify-center space-x-4">
+      <button id="addAchievementButton"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition duration-200 transform hover:scale-105">
+        <i class="fas fa-plus-circle mr-2"></i> Add Academic Achievement
+      </button>
+      <button id="removeAchievementButton"
+        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center transition duration-200 transform hover:scale-105 hidden">
+        <i class="fas fa-minus-circle mr-2"></i> Remove Academic Achievement
+      </button>
+    </div>
+    <table class="w-full table-auto hidden" id="achievementsTable">
+      <thead>
+        <tr class="bg-gray-800">
+          <th class="px-4 py-2 text-left"><i class="fas fa-layer-group"></i> Level</th>
+          <th class="px-4 py-2 text-left"><i class="fas fa-book"></i> Title</th>
+          <th class="px-4 py-2 text-left"><i class="fas fa-calendar-alt"></i> Year</th>
+          <th class="px-4 py-2 text-left"><i class="fas fa-sticky-note"></i> Notes</th>
+        </tr>
+      </thead>
+      <tbody id="achievementsTableBody">
+        <!-- Dynamic rows will be added here -->
+      </tbody>
+    </table>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.classList.remove('opacity-0');
 
-        <table>
-                <tr>
-                  <th>Level</th>
-                  <th>Title</th>
-                  <th>Year</th>
-                  <th>Notes</th>
-                </tr>
-                <tr>
-                  <td><input type="text"></td>
-                  <td><input type="text"></td>
-                  <td><input type="text"></td>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
-                  <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                  </tr>
+      const addAchievementButton = document.getElementById("addAchievementButton");
+      const removeAchievementButton = document.getElementById("removeAchievementButton");
+      const achievementsTable = document.getElementById("achievementsTable");
+      const achievementsTableBody = document.getElementById("achievementsTableBody");
+      let achievementCount = 0;
 
-                
-        </table>
+      addAchievementButton.addEventListener("click", function () {
+        if (achievementsTable.classList.contains("hidden")) {
+          achievementsTable.classList.remove("hidden");
+        }
+        addAchievementRow();
+      });
+
+      removeAchievementButton.addEventListener("click", function () {
+        removeAchievementRow();
+      });
+
+      function addAchievementRow() {
+        achievementCount++;
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                <td><input type="text" placeholder="Enter Level ${achievementCount}" class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:bg-gray-600 transition duration-200"></td>
+                <td><input type="text" placeholder="Enter Title ${achievementCount}" class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:bg-gray-600 transition duration-200"></td>
+                <td><input type="text" placeholder="Enter Year ${achievementCount}" class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:bg-gray-600 transition duration-200"></td>
+                <td><input type="text" placeholder="Enter Notes ${achievementCount}" class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:bg-gray-600 transition duration-200"></td>
+            `;
+        achievementsTableBody.appendChild(row);
+
+        if (achievementCount > 0) {
+          removeAchievementButton.classList.remove("hidden");
+        }
+      }
+
+      function removeAchievementRow() {
+        if (achievementCount > 0) {
+          achievementsTableBody.removeChild(achievementsTableBody.lastChild);
+          achievementCount--;
+        }
+
+        if (achievementCount === 0) {
+          removeAchievementButton.classList.add("hidden");
+          achievementsTable.classList.add("hidden");
+        }
+      }
+    });
+  </script>
 </body>
+
 </html>

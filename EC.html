@@ -1,83 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/2022dd499d.js" crossorigin="anonymous"></script>
+
+    <style>
+        .mainDiv a {
+            background-color: #596275;
+            color: white;
+        }
+
+        h1 {
+            color: #596275;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="name">
-        <h1>Extra-Curriculars</h1>
+    <div class="py-8 text-center">
+        <h1 class="font-bold text-3xl">Extra-Curriculars</h1>
     </div>
-    <div id="Activities">
+    <div id="Activities" class="mx-auto max-w-lg bg-gray-800 p-8 rounded-lg">
         <form>
-            <label for=""> Activity 1 Type </label>
-            <select name="activity" id="activities">
-                <option value="Academic">Academic</option>
-                <option value="Art">Art</option>
-                <option value="Athletics: Club">Athletics: Club</option>
-                <option value="Athletics: JV/Varsity">Athletics: JV/Varsity</option>
-                <option value="Career-Oriented">Career-Oriented</option>
-                <option value="Community Service (Volunteer)">Community Service (Volunteer)</option>
-                <option value="Computer/Technology">Computer/Technology</option>
-                <option value="Cultural">Cultural</option>
-                <option value="Dance">Dance</option>
-                <option value="Debate/Speech">Debate/Speech</option>
-                <option value="Environmental">Environmental</option>
-                <option value="Family Responsibilities">Family Responsibilities</option>
-                <option value="Foreign Exchange">Foreign Exchange</option>
-                <option value="Foreign Language">Foreign Language</option>
-                <option value="Internship">Internship</option>
-                <option value="Journalism/Publication">Journalism/Publication</option>
-                <option value="Junior R.O.T.C.">Junior R.O.T.C.</option>
-                <option value="LGBT">LGBT</option>
-                <option value="Music: Instrumental">Music: Instrumental</option>
-                <option value="Music: Vocal">Music: Vocal</option>
-                <option value="Religious">Religious</option>
-                <option value="Research">Research</option>
-                <option value="Robotics">Robotics</option>
-                <option value="School Spirit">School Spirit</option>
-                <option value="Science/Math">Science/Math</option>
-                <option value="Social Justice">Social Justice</option>
-                <option value="Student Gov.t./Politics">Student Gov.t./Politics</option>
-                <option value="Theater/Drama">Theater/Drama</option>
-                <option value="Work (paid)">Work (paid)</option>
-                <option value="Other Club/Activity">Other Club/Activity</option>
-              </select>
-            <br>
-            <label for=""> Position/Leadership Description Type </label>
-            <input type="text">
-            <br>
-            <label for=""> Organization Name </label>
-            <input type="text">
-            <br>
-            <label for=""> Activity Description </label>
-            <input type="text">
-            <br>
-            <label for=""> Participation Grade Levels (write all active years b/w 9 & 12) </label>
-            <input type="text">
-            <br>
-            <label for=""> Time of Participation </label>
-            <select name="ToP" id="ToP">
-                <option value="During school year">During school year</option>
-                <option value="During school break">During school break</option>
-                <option value="All year">All year</option>
-            </select>
-            <br>
-            <label for=""> Hours spent per week </label>
-            <input type="number">
-            <br>
-            <label for=""> Weeks spent per year </label>
-            <input type="number">
-            <br>
-            <label for=""> I intend to participate in a similar activity in college </label>
-            <select name="Yes or No" id="Yes or No">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <br>
+            <div class="mb-4">
+                <label for="activities" class="flex items-center mb-2">
+                    <i class="fas fa-certificate mr-2"></i> Activity Type
+                </label>
+                <select name="activity" id="activities"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <option value="Academic">Academic</option>
+                    <option value="Art">Art</option>
+                    <option value="Athletics: Club">Athletics: Club</option>
+                    <option value="Athletics: JV/Varsity">Athletics: JV/Varsity</option>
+                    <option value="Career-Oriented">Career-Oriented</option>
+                    <option value="Community Service (Volunteer)">Community Service (Volunteer)</option>
+                    <option value="Computer/Technology">Computer/Technology</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Dance">Dance</option>
+                    <option value="Debate/Speech">Debate/Speech</option>
+                    <option value="Environmental">Environmental</option>
+                    <option value="Family Responsibilities">Family Responsibilities</option>
+                    <option value="Foreign Exchange">Foreign Exchange</option>
+                    <option value="Foreign Language">Foreign Language</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Journalism/Publication">Journalism/Publication</option>
+                    <option value="Junior R.O.T.C.">Junior R.O.T.C.</option>
+                    <option value="LGBT">LGBT</option>
+                    <option value="Music: Instrumental">Music: Instrumental</option>
+                    <option value="Music: Vocal">Music: Vocal</option>
+                    <option value="Religious">Religious</option>
+                    <option value="Research">Research</option>
+                    <option value="Robotics">Robotics</option>
+                    <option value="School Spirit">School Spirit</option>
+                    <option value="Science/Math">Science/Math</option>
+                    <option value="Social Justice">Social Justice</option>
+                    <option value="Student Gov.t./Politics">Student Gov.t./Politics</option>
+                    <option value="Theater/Drama">Theater/Drama</option>
+                    <option value="Work (paid)">Work (paid)</option>
+                    <option value="Other Club/Activity">Other Club/Activity</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="position" class="flex items-center mb-2">
+                    <i class="fas fa-user-tie mr-2"></i> Position/Leadership Description
+                </label>
+                <input type="text" id="position" name="position"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="organization" class="flex items-center mb-2">
+                    <i class="fas fa-building mr-2"></i> Organization Name
+                </label>
+                <input type="text" id="organization" name="organization"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="flex items-center mb-2">
+                    <i class="fas fa-info-circle mr-2"></i> Activity Description
+                </label>
+                <input type="text" id="description" name="description"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="participation" class="flex items-center mb-2">
+                    <i class="fas fa-graduation-cap mr-2"></i> Participation Grade Levels
+                </label>
+                <input type="text" id="participation" name="participation"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="time" class="flex items-center mb-2">
+                    <i class="far fa-clock mr-2"></i> Time of Participation
+                </label>
+                <select name="time" id="time"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <option value="During school year">During school year</option>
+                    <option value="During school break">During school break</option>
+                    <option value="All year">All year</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="hours" class="flex items-center mb-2">
+                    <i class="far fa-clock mr-2"></i> Hours spent per week
+                </label>
+                <input type="number" id="hours" name="hours"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="weeks" class="flex items-center mb-2">
+                    <i class="far fa-clock mr-2"></i> Weeks spent per year
+                </label>
+                <input type="number" id="weeks" name="weeks"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="intend" class="flex items-center mb-2">
+                    <i class="fas fa-graduation-cap mr-2"></i> Intend to participate in college
+                </label>
+                <select name="intend" id="intend"
+                    class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
         </form>
     </div>
 </body>
+
 </html>
