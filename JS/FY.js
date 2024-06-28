@@ -24,8 +24,8 @@ document.getElementById("submit").addEventListener("click", function (e) {
     const file1 = document.getElementById("file1").value;
     const file2 = document.getElementById("file2").value;
 
-    // const userEmail = document.cookie.split("sanitizedEmail=")[1].split(";")[0];
-    const userEmail = 'adirbhat@gmail.com';
+    const userEmail = document.cookie.split("sanitizedEmail=")[1].split(";")[0];
+    //const userEmail = 'adirbhat@gmail.com';
     // Create a document reference
     const fyDocRef = doc(db, `students/${userEmail}/FY/${school}`);
 
