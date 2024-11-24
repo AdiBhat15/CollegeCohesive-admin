@@ -58,10 +58,16 @@
   </div>
   <div class="mb-8">
     <label for="file1" class="block mb-2 flex items-center">
-      <i class="fas fa-file-upload text-gray-400 mr-2"></i> Upload Report Cards
+      <i class="fas fa-file-upload text-gray-400 mr-2"></i> Upload Report Cards (PDF)
     </label>
-    <input type="file" id="file1" class="mb-2">
-    <input type="file" id="file2">
+    <input type="file" id="file1" accept="application/pdf" class="mb-2">
+    <div id="pdfViewer" class="hidden mt-4"> 
+      <iframe id="pdfFrame" width="40%" height="300px" class="rounded-lg border border-gray-700" frameborder="0"></iframe>
+    </div>
+    <input type="file" id="file2" accept="application/pdf">
+    <div id="pdfViewer2" class="hidden mt-4"> 
+      <iframe id="pdfFrame2" width="40%" height="300px" class="rounded-lg border border-gray-700" frameborder="0"></iframe>
+    </div>
   </div>
   <button type="submit" id="submit"
     class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105">
@@ -114,6 +120,37 @@
     });
   </script>
   <script src="./JS/SY.js" type="module"></script>
+  <!-- code for pdf viewer -->
+  <script>
+    document.getElementById('file1').addEventListener('change', function(event) {
+const file = event.target.files[0];
+if (file && file.type === 'application/pdf') {
+    const fileURL = URL.createObjectURL(file);
+    const pdfViewer = document.getElementById('pdfViewer');
+    const pdfFrame = document.getElementById('pdfFrame');
+
+    pdfFrame.src = fileURL; // Set the file URL as the iframe source
+    pdfViewer.classList.remove('hidden'); // Show the PDF viewer
+} else {
+    alert('Please upload a valid PDF file.');
+}
+});
+
+document.getElementById('file2').addEventListener('change', function(event) {
+const file = event.target.files[0];
+if (file && file.type === 'application/pdf') {
+    const fileURL = URL.createObjectURL(file);
+    const pdfViewer = document.getElementById('pdfViewer2');
+    const pdfFrame = document.getElementById('pdfFrame2');
+
+    pdfFrame.src = fileURL; // Set the file URL as the iframe source
+    pdfViewer.classList.remove('hidden'); // Show the PDF viewer
+} else {
+    alert('Please upload a valid PDF file.');
+}
+});
+
+ </script>
 
 </body>
 </html>

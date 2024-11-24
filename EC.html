@@ -55,19 +55,22 @@
                     <label for="position" class="flex items-center mb-2">
                         <i class="fas fa-user-tie mr-2"></i> Position/Leadership Description
                     </label>
-                    <input type="text"  id="position" name="position" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <input type="text"  id="position" name="position" maxlength="50" onkeyup="updatecharCount('position')" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <span> Character Count: <span id="PcharCount">0</span> /50 </span>
                 </div>
                 <div class="mb-4">
                     <label for="organization" class="flex items-center mb-2">
                         <i class="fas fa-building mr-2"></i> Organization Name
                     </label>
-                    <input type="text" id="organization" name="organization" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <input type="text" id="organization" name="organization"  maxlength="100" onkeyup="updatecharCount('organization')" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <span> Character Count: <span id="OrgcharCount">0</span> /100 </span>
                 </div>
                 <div class="mb-4">
                     <label for="description" class="flex items-center mb-2">
                         <i class="fas fa-info-circle mr-2"></i> Activity Description
                     </label>
-                    <input type="text" id="description" name="description" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <input type="text" id="description" name="description" maxlength="150" onkeyup="updatecharCount('description')" class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+                    <span> Character Count: <span id="DcharCount">0</span> /150 </span>
                 </div>
                 <div class="mb-4">
                     <label for="participation" class="flex items-center mb-2">
@@ -253,7 +256,29 @@
                 }
             }
         });
+        function updatecharCount(arg)
+  {
+    console.log(arg)
+    if (arg=="position")
+    {
+     input = document.getElementById("position");
+     charCount=document.getElementById("PcharCount");
+    }
+    else if(arg=="organization")
+    {
+         input = document.getElementById("organization");
+         charCount=document.getElementById("OrgcharCount");
+    }
+    else
+    {
+         input = document.getElementById("description");
+         charCount=document.getElementById("DcharCount");
+    }
+    charCount.innerHTML = input.value.length;
+}
+  
+
     </script>
     <script type="module" src="../js/EC.JS"></script>
 </body>
-</html> 
+</html>
