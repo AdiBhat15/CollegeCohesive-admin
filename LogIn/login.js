@@ -23,7 +23,7 @@ document.getElementById("submit").addEventListener("click", async function (e) {
                 document.cookie = `email=${encodeURIComponent(email)}; path=/;`;
                 document.cookie = `sanitizedEmail=${sanitizedEmail}; path=/;`;
                 // Redirect to the landing page
-                window.location.href = '../index.html'; // Replace with your landing page URL
+                window.location.href = 'landing.html'; // Replace with your landing page URL
             } else {
                 alert('Incorrect password');
             }

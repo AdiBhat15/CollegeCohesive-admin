@@ -15,14 +15,14 @@ const allExtraCurriculars = document.querySelectorAll('#additionalActivitiess di
   let intends = [];
 
   activities[0]=document.getElementById("activities").values;
-  positions[0]=document.getElementById("positions").values;
-  organizations[0]=document.getElementById("organizations").values;
-  descriptions[0]=document.getElementById("descriptions").values;
-  participations[0]=document.getElementById("participations").values;
-  times[0]=document.getElementById("times").values;
+  positions[0]=document.getElementById("position").values;
+  organizations[0]=document.getElementById("organization").values;
+  descriptions[0]=document.getElementById("description").values;
+  participations[0]=document.getElementById("participation").values;
+  times[0]=document.getElementById("time").values;
   hours[0]=document.getElementById("hours").values;
   weeks[0]=document.getElementById("weeks").values;
-  intends[0]=document.getElementById("intends").values;
+  intends[0]=document.getElementById("intend").values;
   
 allExtraCurriculars.forEach((form)=>{
    activities.push(form.querySelector('select[name = "activity"]').value)

@@ -3,116 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/2022dd499d.js" crossorigin="anonymous"></script>
-  <style>
-    h1{
-        color: #596275;
+    <title>Junior Year</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome CSS -->
+</head>
+<body class="bg-gray-900 text-white opacity-0 animate-fade-in">
+    <div class="container mx-auto py-8">
+        <div id="name" class="text-center mb-8">
+            <h1 class="text-3xl font-bold">Junior Year</h1>
+        </div>
+        <form class="mb-8">
+            <div class="mb-4">
+                <label for="school" class="block mb-2 flex items-center">
+                    <i class="fas fa-school text-gray-400 mr-2"></i> School
+                </label>
+                <input type="text" id="school" name="school" placeholder="Enter school name" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
+            </div>
+            <div class="mb-4">
+                <label for="curriculum" class="block mb-2 flex items-center">
+                    <i class="fas fa-book text-gray-400 mr-2"></i> Curriculum
+                </label>
+                <input type="text" id="curriculum" name="curriculum" placeholder="Enter curriculum" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
+            </div>
+        </form>
+        <div class="flex space-x-4 mb-8">
+            <button type="button" id="addSubjectsButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105">
+                <i class="fas fa-plus-circle mr-2"></i> Add Subjects
+            </button>
+            <button type="button" id="removeSubjectsButton" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105 hidden">
+                <i class="fas fa-minus-circle mr-2"></i> Remove Subjects
+            </button>
+        </div>
+        <div id="subjectFields" class="hidden">
+            <table class="w-full table-auto">
+                <thead>
+                    <tr>
+                        <th class="text-left px-4 py-2"><i class="fas fa-book text-gray-400 mr-2"></i> Subjects</th>
+                        <th class="text-left px-4 py-2"><i class="fas fa-graduation-cap text-gray-400 mr-2"></i> Semester 1 Grades</th>
+                        <th class="text-left px-4 py-2"><i class="fas fa-graduation-cap text-gray-400 mr-2"></i> Semester 2 Grades</th>
+                    </tr>
+                </thead>
+                <tbody id="subjectRows">
+                    <!-- Dynamic rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-8">
+            <label for="file1" class="block mb-2 flex items-center">
+                <i class="fas fa-file-upload text-gray-400 mr-2"></i> Upload Report Cards (*upload only pdfs)
+            </label>
+            <input type="file" id="file1" accept="application/pdf" class="mb-2">
+            <div id="pdfViewer" class="hidden mt-4">
+                <iframe id="pdfFrame" width="100%" height="500px" class="rounded-lg border border-gray-700"></iframe>
+            </div>
+            <input type="file" id="file2" accept="application/pdf">
+        </div>
+        <button type="submit" id="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105">
+            <i class="fas fa-check-circle mr-2"></i> Submit
+        </button>
+    </div>
+
+    <style>
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1s ease-in-out forwards;
+        }
+
+        /* Enlarge button on hover */
+        .transform-gpu {
+            transition: transform 0.3s ease;
+        }
+    </style>
+
+    <!-- Font Awesome CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-KkMgOZ6A5drFwYi/+ZlDsEtXGZ1Ax1f8nVgKqCvI5j6jPlT64DZJecjA9ZUfLWuXUjZJpT0HbyUN8F3SZWWrFw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Remove the opacity-0 class after the page loads to trigger the animation
+            document.body.classList.remove('opacity-0');
+
+            const addSubjectsButton = document.getElementById("addSubjectsButton");
+            const removeSubjectsButton = document.getElementById("removeSubjectsButton");
+            const subjectFields = document.getElementById("subjectFields");
+            const subjectRows = document.getElementById("subjectRows");
+            let subjectCount = 0;
+
+            addSubjectsButton.addEventListener("click", function() {
+                subjectFields.classList.remove("hidden");
+                subjectCount++;
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><input type="text" id="subjects" placeholder="Enter Subject ${subjectCount}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+                    <td><input type="text" id="s1g" placeholder="Enter Semester 1 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+                    <td><input type="text" id="s2g" placeholder="Enter Semester 2 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+                `;
+                subjectRows.appendChild(row);
+                removeSubjectsButton.classList.remove("hidden");
+            });
+
+            removeSubjectsButton.addEventListener("click", function() {
+                if (subjectRows.children.length > 0) {
+                    subjectRows.removeChild(subjectRows.lastChild);
+                    subjectCount--;
+                }
+                if (subjectRows.children.length === 0) {
+                    removeSubjectsButton.classList.add("hidden");
+                    subjectFields.classList.add("hidden");
+                }
+            });
+        });
+    </script>
+    <script type="module" src="./js/JY.js" ></script>
+    <!-- code for pdf viewer -->
+     <script>
+        document.getElementById('file1').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+        const fileURL = URL.createObjectURL(file);
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfFrame = document.getElementById('pdfFrame');
+
+        pdfFrame.src = fileURL; // Set the file URL as the iframe source
+        pdfViewer.classList.remove('hidden'); // Show the PDF viewer
+    } else {
+        alert('Please upload a valid PDF file.');
     }
-</style>
-  </head>
-<body>
-  <div class="text-center my-8">
-    <h1 class="text-3xl font-bold">Junior Year</h1>
-  </div>
-  <form class="my-8">
-    <div class="my-4">
-      <label for="school" class="block mb-2 flex item-center"> <i class="fas fa-school text-gray-400 mr-2"></i> School
-      </label>
-      <input type="text" id="school" name="school" placeholder="enter school name"
-        class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
-    </div>
-    <div class="my-4">
-      <label for="curriculum" class="block mb-2 flex item-center"> <i class="fas fa-book text-gray-400 mr-2"></i>
-        curriculum </label>
-      <input type="text" id="curriculum" name="curriculum" placeholder="enter curriculum name"
-        class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
-    </div>
-  </form>
-  <div class="mb-4 flex justify-center space-x-4">
-    <button type="button" id="addSubjectsButton"
-      class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105">
-      <i class="fas fa-plus-circle mr-2"></i> Add Subjects
-    </button>
-    <button type="button" id="removeSubjectsButton"
-      class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105 hidden">
-      <i class="fas fa-minus-circle mr-2"></i> Remove Subjects
-    </button>
-  </div>
-  <div class="mb-8">
-    <table class="w-full table-auto hidden" id="subjectsTable">
-      <thead>
-        <tr>
-          <th class="text-left px-4 py-2"><i class="fas fa-book text-gray-400 mr-2"></i> Subjects</th>
-          <th class="text-left px-4 py-2"><i class="fas fa-graduation-cap text-gray-400 mr-2"></i> Semester 1 Grades
-          </th>
-          <th class="text-left px-4 py-2"><i class="fas fa-graduation-cap text-gray-400 mr-2"></i> Semester 2 Grades
-          </th>
-        </tr>
-      </thead>
-      <tbody id="subjectsTableBody">
-        <!-- Dynamic rows will be added here -->
-      </tbody>
-    </table>
-  </div>
-  <div class="mb-8">
-    <label for="file1" class="block mb-2 flex items-center">
-      <i class="fas fa-file-upload text-gray-400 mr-2"></i> Upload Report Cards
-    </label>
-    <input type="file" id="file1" class="mb-2">
-    <input type="file" id="file2">
-  </div>
-  <button type="submit" id="submit"
-    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105">
-    <i class="fas fa-check-circle mr-2"></i> Submit
-  </button>
-  <button type="" id=""
-    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform hover:scale-105">
-    <a href="Hon.html">View Honors</a>
-  </button>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Remove the opacity-0 class after the page loads to trigger the animation
-      document.body.classList.remove('opacity-0');
+});
 
-      const addSubjectsButton = document.getElementById("addSubjectsButton");
-      const removeSubjectsButton = document.getElementById("removeSubjectsButton");
-      const subjectsTable = document.getElementById("subjectsTable");
-      const subjectsTableBody = document.getElementById("subjectsTableBody");
-      let subjectCount = 0;
-
-      addSubjectsButton.addEventListener("click", function () {
-        if (subjectCount === 0) {
-          subjectsTable.classList.remove("hidden");
-        }
-        subjectCount++;
-        const row = document.createElement("tr");
-        row.innerHTML = `
-              <td><input type="text" id="subjects" placeholder="Enter Subject ${subjectCount}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-              <td><input type="text" id="s1g" placeholder="Enter Semester 1 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-              <td><input type="text" id="s2g" placeholder="Enter Semester 2 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-          `;
-        subjectsTableBody.appendChild(row);
-
-        if (subjectCount > 0) {
-          removeSubjectsButton.classList.remove("hidden");
-        }
-      });
-
-      removeSubjectsButton.addEventListener("click", function () {
-        if (subjectCount > 0) {
-          subjectsTableBody.removeChild(subjectsTableBody.lastChild);
-          subjectCount--;
-        }
-
-        if (subjectCount === 0) {
-          removeSubjectsButton.classList.add("hidden");
-          subjectsTable.classList.add("hidden");
-        }
-      });
-    });
-  </script>
-  <script src="./JS/JY.js" type="module"></script>
+     </script>
 </body>
 </html>

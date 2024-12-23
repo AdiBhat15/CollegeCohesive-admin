@@ -13,6 +13,12 @@ import {
     where,
     getDocs,
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,4 +36,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export { app, db, collection, addDoc, getDoc, setDoc, doc, updateDoc, query, where, getDocs };
+const storage = getStorage(app);
+
+export { app, db, storage, collection, addDoc, getDoc, setDoc, doc, updateDoc, query, where, getDocs, storageRef, uploadBytes, getDownloadURL };
+
