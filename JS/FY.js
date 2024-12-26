@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (fyData.file2) {
       const file2Link = document.createElement("a");
-      file2Link.href = data.file2;
+      file2Link.href = fyData.file2;
       file2Link.target = "_blank";
       file2Link.textContent = "View Uploaded File 2";
       file2Input.insertAdjacentElement("afterend", file2Link);

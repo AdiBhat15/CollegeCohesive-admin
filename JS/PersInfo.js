@@ -1,7 +1,9 @@
-import { db, doc, setDoc } from './config.js';
+import { db, doc, setDoc, collection } from './config.js';
 
 document.getElementById("submit1").addEventListener("click", function (e) {
     e.preventDefault();
+  const userEmail = document.cookie.split("sanitizedEmail=")[1]?.split(";")[0];
+
     const fname = document.getElementById("studentName").value;
     const mname = document.getElementById("middleName").value;
     const sname = document.getElementById("surname").value;
@@ -15,49 +17,54 @@ document.getElementById("submit1").addEventListener("click", function (e) {
     const country = document.getElementById("country").value;
     const mobileno = document.getElementById("mobileNo").value;
     const email = document.getElementById("email").value;
-    console.log("test");
 
-    const userEmail = 'adirbhat@gmail.com';
-    const stuDocRef = doc(db, `students/${userEmail}/stuInfo/${email}`)
+    // const docRef = doc(db, "Si", fname); // Firestore document reference
+    const userCollection = collection(db, "students", userEmail, "StuInfo");
 
-    setDoc(stuDocRef, {
-        studentName: fname,
-        middleName: mname,
-        surname: sname,
-        Dob: dob,
-        nationality: origin1,
-        nationality2: origin2,
-        address: add,
-        Street: street,
-        City: city,
-        Zipcode: zipcode,
-        Country: country,
-        MobileNo: mobileno,
-        Email: email,
+    setDoc(doc(userCollection), {
+        fname: fname,
+        mname: mname,
+        sname: sname,
+        dob: dob,
+        origin1: origin1,
+        origin2: origin2,
+        add: add,
+        street: street,
+        city: city,
+        zipcode: zipcode,
+        country: country,
+        mobileno: mobileno,
+        email: email,
+    }).then(() => {
+        alert("Data sent successfully!");
+    }).catch((error) => {
+        console.error("Error writing document: ", error);
     });
-    alert("send hogaya");
-
 });
 
 document.getElementById("submit2").addEventListener("click", function (e) {
     e.preventDefault(); 
-    const mother = document.getElementById("mother").value;
-    const surname = document.getElementById("surname").value;
-    const mob = document.getElementById("mob").value;
-    const email = document.getElementById("email").value;
-    const legace = document.getElementById("legace").value;
-    const garduate = document.getElementById("garduate").value;
-    const father = document.getElementById("father").value;
-    const fsur = document.getElementById("fsur").value;
-    const fno = document.getElementById("fno").value;
-    const femail = document.getElementById("femail").value;
-    const flegace = document.getElementById("flegace").value;
-    const fgrad = document.getElementById("fgrad").value;
+  const userEmail = document.cookie.split("sanitizedEmail=")[1]?.split(";")[0];
 
-    const userEmail = 'adirbhat@gmail.com';
-    const parDocRef = doc(db, `students/${userEmail}/parInfo/${email}`)
+    const mother = document.getElementById("mother-name").value;
+    const surname = document.getElementById("mother-surname").value;
+    const mob = document.getElementById("mother-mobile").value;
+    const email = document.getElementById("mother-email").value;
+    const legace = document.getElementById("mother-undergraduate").value;
+    const garduate = document.getElementById("mother-graduate").value;
+    const father = document.getElementById("father-name").value;
+    const fsur = document.getElementById("father-surname").value;
+    const fno = document.getElementById("father-mobile").value;
+    const femail = document.getElementById("father-email").value;
+    const flegace = document.getElementById("father-undergraduate").value;
+    const fgrad = document.getElementById("father-graduate").value;
 
-    setDoc(parDocRef, {
+    // const userEmail = 'adirbhat@gmail.com';
+    // const parDocRef = doc(db, `students/${userEmail}/parInfo`, email); // Firestore document reference
+    const userCollection = collection(db, "students", userEmail, "ParInfo");
+
+
+    setDoc(doc(userCollection), {
         Mother: mother,
         Surname: surname,
         Mob: mob,
@@ -70,8 +77,9 @@ document.getElementById("submit2").addEventListener("click", function (e) {
         Femail: femail,
         Flegace: flegace,
         fgarduate: fgrad,
-
-    })
-
-        
-})
+    }).then(() => {
+        alert("Parent information sent successfully!");
+    }).catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+});
