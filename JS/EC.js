@@ -1,12 +1,67 @@
-import { db, doc, setDoc, collection } from "./config.js";
+import { db, doc, setDoc, getDoc, getDocs, collection, storage, storageRef, uploadBytes, getDownloadURL } from "./config.js";
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const userEmail = document.cookie.split("sanitizedEmail=")[1]?.split(";")[0];
+
+  if (!userEmail) {
+    alert("User not logged in!");
+    return;
+  }
+  let activitiesField = [];
+  let positionsField = [];
+  let organizationsField =[];
+  let descriptionsField =[];
+  let participationsField =[];
+  let timesField= [];
+  let hoursField = [];
+  let weeksField =[];
+  let intendsField = [];
+
+   activitiesField [0] = document.getElementById("activites");
+   positionsField [0] = document.getElementById("positions");
+   organizationsField [0] = document.getElementById("organizations");
+   descriptionsField [0] = document.getElementById("descriptions");
+   participationsField = document.getElementById("participations");
+   timesField [0] = document.getElementById("times");
+   hoursField [0] = document.getElementById("hours");
+   weeksField [0] = document.getElementById("weeks");
+   intendsField [0] = document.getElementById("intends");
+
+  // Fetch data from Firestore
+
+   // Reference to the EC subcollection
+   const ecCollectionRef = collection(db, `students/${userEmail}/extra-curriculars`);
+   const ecSnapshot = await getDocs(ecCollectionRef);
+   console.log(ecSnapshot)
+
+  if (!ecSnapshot.empty) {
+     // Assuming there's only one school entry, or select the first document
+   const firstDoc = ecSnapshot.docs[0];
+   const activityName = firstDoc.id; 
+   const ecData = firstDoc.data();
+   console.log(ecData);
+
+    // Pre-fill form fields
+    console.log(activitiesField[0])
+    activitiesField[0].value = ecData.activityType || "";
+    positionsField.value = ecData.position || "";
+    organizationsField.value = ecData.organization || "";
+    descriptionsField.value = ecData.description || "";
+    participationsField.value = ecData.participationGradeLevels || "";
+    timesField.value = ecData.timeOfParticipation || "";
+    hoursField.value = ecData.hoursPerWeek || "";
+    weeksField.value = ecData.weeksPerYear || "";
+    intendsField.value = ecData.intendToParticipateInCollege || "";
+
+  } else {
+    console.log("No previous data found for this user.");
+  }
+});
 
 document.getElementById("submit").addEventListener("click", async function (e) {
   e.preventDefault();
 
   const allExtraCurriculars = document.querySelectorAll("#additionalActivities div form");
-
-  const ecCollectionRef = collection(db, `students/${userEmail}/EC`);
-  const ecSnapshot = await getDocs(ecCollectionRef);
 
   let activities = [];
   let positions = [];

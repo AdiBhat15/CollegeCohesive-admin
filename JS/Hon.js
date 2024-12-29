@@ -1,11 +1,12 @@
-import { db, doc, setDoc } from "./config.js";
+import { db, doc, setDoc, getDoc, getDocs, collection, storage, storageRef, uploadBytes, getDownloadURL } from "./config.js";
 
 // Event listener for form submission to save data
 document.getElementById("submit").addEventListener("click", function (e) {
     e.preventDefault();
     const allAchievements = document.querySelectorAll("#achievementsTableBody tr");
-    const userEmail="adirbhat@gmail.com";
-    //const userEmail = document.cookie.split("sanitizedEmail=")[1].split(";")[0];
+    console.log
+    //const userEmail="adirbhat@gmail.com";
+    const userEmail = document.cookie.split("sanitizedEmail=")[1].split(";")[0];
 
     allAchievements.forEach((row) => {
         const level = row.querySelector('input[id="level"]').value; 
