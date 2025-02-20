@@ -9,11 +9,23 @@
     <script src="https://kit.fontawesome.com/2022dd499d.js" crossorigin="anonymous"></script>
 
     <style>
-        .mainDiv a{
-            background-color: #596275; color: white ;
+        @font-face {
+            font-family: webPageFont;
+            src: url('https://fonts.googleapis.com/css2?family=Jomolhari&display=swap');
         }
-        h1{
+
+        .mainDiv a {
+            background-color: #596275;
+            color: white;
+        }
+
+        h1 {
             color: #596275;
+            font-family: webPageFont;
+        }
+
+        a {
+            font-family: webPageFont;
         }
     </style>
 </head>
@@ -22,33 +34,39 @@
     <div class="text-center my-8">
         <h1 class="text-3xl font-bold">Education</h1>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class=" rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 mainDiv"> <a
+    <div class="grid grid-cols-2 gap-4">
+        <div class="  overflow-hidden hover:scale-105 transform transition duration-300 mx-10 w-300 mainDiv"> <a
                 class="block p-4 flex items-center justify-center h-full group" href="FY.html">
                 <i
                     class="fas fa-chalkboard-teacher text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
-                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300"> Freshman Year</span></a> </div>
-        <div class=" rounded-lg overflow-hidden hover:scale-105 transform transition duration 300 mainDiv"> <a
+                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300"> Freshman
+                    Year</span></a> </div>
+        <div class="  overflow-hidden hover:scale-105 transform transition duration 300 mx-10 w-300 mainDiv"> <a
                 class="block p-4 flex items-center justify-center h-full group" href="SY.html">
                 <i
                     class="fas fa-user-graduate text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
-                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Sophomore Year</span></a> </div>
-        <div class=" rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 mainDiv"> <a
+                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Sophomore
+                    Year</span></a> </div>
+        <div class="  overflow-hidden hover:scale-105 transform transition duration-300 mx-10 w-300 mainDiv"> <a
                 class="block p-4 flex items-center justify-center h-full group" href="JY.html">
                 <i
                     class="fas fa-user-graduate text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
-                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300"> Junior Year </span> </a> </div>
-        <div class=" rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 mainDiv"> <a
+                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300"> Junior Year
+                </span> </a> </div>
+        <div class="  overflow-hidden hover:scale-105 transform transition duration-300 mx-10 w-300 mainDiv"> <a
                 class="block p-4 flex items-center justify-center h-full group" href="SenY.html">
                 <i
                     class="fas fa-user-graduate text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
-                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Senior Year</span></a> </div>
-        <div class=" rounded-lg overflow-hidden hover:scale-105 transform transition duration-300 mainDiv"> <a
-                class="block p-4 flex items-center justify-center h-full group" href="Hon.html">
-                <i class="fas fa-medal text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
-                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Honors</span>
-            </a> </div>
+                <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Senior
+                    Year</span></a> </div>
     </div>
+
+    <div class="  overflow-hidden w-3/6  p-6 mx-auto hover:scale-105 transform transition duration-300 mainDiv"> <a
+        class="block p-4 flex items-center justify-center h-full group" href="Hon.html">
+        <i class="fas fa-medal text-gray-400 text-4xl group-hover:text-gray-300 transition duration-300"></i>
+        <span class="text-white text-lg ml-2 group-hover:text-gray-300 transition duration-300">Honors</span>
+    </a> </div>
+
 </body>
 
 </html>

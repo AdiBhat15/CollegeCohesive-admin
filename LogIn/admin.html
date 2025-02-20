@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-white min-h-screen">
+    <div class="container mx-auto px-4 py-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Admin Panel</h1>
+
+        <!-- Search Bar -->
+        <div class="flex justify-between items-center mb-4">
+            <input 
+                type="text" 
+                placeholder="Search by name or email..." 
+                class="w-full max-w-md px-4 py-2 rounded-lg inputBG text-white placeholder-white focus:outline-none focus:ring focus:ring-blue-500"
+            >
+            <button 
+                class="ml-4 buttonBG text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+                Search
+            </button>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full table-auto inputBG rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-white tC text-left">
+                        <th class="px-4 py-2">Student Name</th>
+                        <th class="px-4 py-2">Student Email</th>
+                        <th class="px-4 py-2">Student Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        @font-face {
+        font-family: webPageFont ;
+        src: url('https://fonts.googleapis.com/css2?family=Jomolhari&display=swap');}
+        body{
+            font-family: webPageFont ;
+        }
+        /* Smooth hover for the table rows */
+        tr:hover {
+            transition: background-color 0.2s ease-in-out;
+        }
+        .inputBG
+    {
+        background-color: #596275;
+    }
+    h1{
+        color: #596275;
+    }
+    .buttonBG
+    {
+            background-color: #596275;
+    }
+    .tC
+    {
+        color: #596275;
+    }
+    </style>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

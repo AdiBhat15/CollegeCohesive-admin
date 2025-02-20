@@ -26,6 +26,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
     }
     console.log("Generated Password:", password);
     const email = document.getElementById("email").value;
+    const username = document.getElementById("username").value;
     // Sanitize email address
     const sanitizedEmail = email.replace(/[.#$[\]]/g, "-");
 
@@ -33,6 +34,7 @@ document.getElementById("submit").addEventListener("click", function (e) {
 
     const studentRef = doc(db, "students", sanitizedEmail);
     setDoc(studentRef, {
+        username: username,
         email: email,
         password: password
     }).then(() => {
@@ -40,6 +42,11 @@ document.getElementById("submit").addEventListener("click", function (e) {
     }).catch((error) => {
         console.error("Error adding data to Firestore: ", error);
     });
+});
+
+document.getElementById("login").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.href = 'login.html';
 });
 
 function sendPasswordEmail(email, password) {

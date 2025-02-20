@@ -6,6 +6,16 @@ document.getElementById("submit").addEventListener("click", async function (e) {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
+    if (email === 'admin456@gmail.com') {
+        if (password === '2357') {
+            window.location.href = 'admin.html'; // Replace with your landing page URL
+        } else {
+            alert('Incorrect Password');
+        }
+    }
+
+    // for other users apart from admin
+    else {
     // Sanitize email address
     const sanitizedEmail = email.replace(/[.#$[\]]/g, "-");
 
@@ -34,4 +44,5 @@ document.getElementById("submit").addEventListener("click", async function (e) {
         console.error("Error fetching user data:", error);
         alert('An error occurred. Please try again.');
     }
+}
 });
