@@ -6,8 +6,67 @@
     <title>Freshman Year</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome CSS -->
+
+    <style>
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1s ease-in-out forwards;
+        }
+
+        /* Enlarge button on hover */
+        .transform-gpu {
+            transition: transform 0.3s ease;
+        }
+
+        @font-face {
+        font-family: webPageFont ;
+        src: url('https://fonts.googleapis.com/css2?family=Jomolhari&display=swap');
+    }
+    .mainDiv {
+        background-color: #596275; color: white ;
+       
+        font-family: webPageFont;
+        color: #596275;
+    }
+    
+    h1{
+        color: #596275;
+        font-family: webPageFont ;
+    }
+    a{
+        font-family: webPageFont ;
+    }
+    label{
+        font-family: webPageFont ;
+        color: #596275;
+    }
+    button{
+        font-family: webPageFont ;
+        color: #596275;
+    }
+    th{
+        font-family: webPageFont ;
+        color: #596275;
+    }
+    .buttonBG
+    {
+            background-color: #596275;
+    }
+    .inputBG
+    {
+        background-color: #596275;
+    }
+    .func.Buttions{
+        background-color: #596275;
+    }
+    </style>
+
 </head>
-<body class="bg-gray-900 text-white opacity-0 animate-fade-in">
+<body class="bg-white text-white opacity-0 animate-fade-in">
     <div class="container mx-auto py-8">
         <div id="name" class="text-center mb-8">
             <h1 class="text-3xl font-bold">Freshman Year</h1>
@@ -17,20 +76,20 @@
                 <label for="school" class="block mb-2 flex items-center">
                     <i class="fas fa-school text-gray-400 mr-2"></i> School
                 </label>
-                <input type="text" id="school" name="school" placeholder="Enter school name" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
+                <input type="text" id="school" name="school" placeholder="Enter school name" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200" style = "font-family: webPageFont">
             </div>
             <div class="mb-4">
                 <label for="curriculum" class="block mb-2 flex items-center">
                     <i class="fas fa-book text-gray-400 mr-2"></i> Curriculum
                 </label>
-                <input type="text" id="curriculum" name="curriculum" placeholder="Enter curriculum" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200">
+                <input type="text" id="curriculum" name="curriculum" placeholder="Enter curriculum" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200" style = "font-family: webPageFont">
             </div>
         </form>
         <div class="flex space-x-4 mb-8">
-            <button type="button" id="addSubjectsButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105">
+            <button type="button" id="addSubjectsButton" class="buttonBG text-white font-bold py-2 px-4 transition duration-200 transform-gpu hover:scale-105">
                 <i class="fas fa-plus-circle mr-2"></i> Add Subjects
             </button>
-            <button type="button" id="removeSubjectsButton" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105 hidden">
+            <button type="button" id="removeSubjectsButton" class="buttonBG text-white font-bold py-2 px-4 transition duration-200 transform-gpu hover:scale-105 hidden">
                 <i class="fas fa-minus-circle mr-2"></i> Remove Subjects
             </button>
         </div>
@@ -54,30 +113,14 @@
             </label>
             <input type="file" id="file1" accept="application/pdf" class="mb-2">
             <div id="pdfViewer" class="hidden mt-4">
-                <iframe id="pdfFrame" width="100%" height="500px" class="rounded-lg border border-gray-700"></iframe>
+                <iframe id="pdfFrame" width="100%" height="500px" class= border border-gray-700"></iframe>
             </div>
             <input type="file" id="file2" accept="application/pdf">
         </div>
-        <button type="submit" id="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 transform-gpu hover:scale-105">
+        <button type="submit" id="submit" class="buttonBG text-white font-bold py-2 px-4 transition duration-200 transform-gpu hover:scale-105">
             <i class="fas fa-check-circle mr-2"></i> Submit
         </button>
     </div>
-
-    <style>
-        @keyframes fade-in {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 1s ease-in-out forwards;
-        }
-
-        /* Enlarge button on hover */
-        .transform-gpu {
-            transition: transform 0.3s ease;
-        }
-    </style>
 
     <!-- Font Awesome CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-KkMgOZ6A5drFwYi/+ZlDsEtXGZ1Ax1f8nVgKqCvI5j6jPlT64DZJecjA9ZUfLWuXUjZJpT0HbyUN8F3SZWWrFw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -98,9 +141,9 @@
                 subjectCount++;
                 const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td><input type="text" id="subjects" placeholder="Enter Subject ${subjectCount}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-                    <td><input type="text" id="s1g" placeholder="Enter Semester 1 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-                    <td><input type="text" id="s2g" placeholder="Enter Semester 2 Grade" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+                    <td><input type="text" id="subjects" placeholder="Enter Subject ${subjectCount}" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200" style = "font-family: webPageFont"></td >
+                    <td><input type="text" id="s1g" placeholder="Enter Semester 1 Grade" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200" style = "font-family: webPageFont"></td>
+                    <td><input type="text" id="s2g" placeholder="Enter Semester 2 Grade" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200" style = "font-family: webPageFont"></td>
                 `;
                 subjectRows.appendChild(row);
                 removeSubjectsButton.classList.remove("hidden");

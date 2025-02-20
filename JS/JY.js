@@ -16,15 +16,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Fetch data from Firestore
 
-   // Reference to the JY subcollection
-   const jyCollectionRef = collection(db, `students/${userEmail}/JY`);
-   const jySnapshot = await getDocs(jyCollectionRef);
+  // Reference to the JY subcollection
+  const jyCollectionRef = collection(db, `students/${userEmail}/JY`);//connect to firebase and get data back
+  const jySnapshot = await getDocs(jyCollectionRef);
 
   if (!jySnapshot.empty) {
-     // Assuming there's only one school entry, or select the first document
-   const firstDoc = jySnapshot.docs[0];
-   const schoolName = firstDoc.id; // Document ID is the school name
-   const jyData = firstDoc.data();
+    // Assuming there's only one school entry, or select the first document
+    const firstDoc = jySnapshot.docs[0];
+    const schoolName = firstDoc.id; // Document ID is the school name
+    const jyData = firstDoc.data();
 
 
     // Pre-fill form fields
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       jyData.Subjects.forEach((subject, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td><input type="text" id="subjects" value="${subject}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-          <td><input type="text" id="s1g" value="${jyData.Semester1[index]}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-          <td><input type="text" id="s2g" value="${jyData.Semester2[index]}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="subjects" value="${subject}" class="w-full px-4 py-2  inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="s1g" value="${jyData.Semester1[index]}" class="w-full px-4 py-2  inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="s2g" value="${jyData.Semester2[index]}" class="w-full px-4 py-2  inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
         `;
         subjectRows.appendChild(row);
       });

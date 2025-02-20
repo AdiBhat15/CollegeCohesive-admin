@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       senyData.Subjects.forEach((subject, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td><input type="text" id="subjects" value="${subject}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-          <td><input type="text" id="s1g" value="${senyData.Semester1[index]}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
-          <td><input type="text" id="s2g" value="${senyData.Semester2[index]}" class="w-full px-4 py-2 rounded-lg bg-gray-800 focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="subjects" value="${subject}" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="s1g" value="${senyData.Semester1[index]}" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
+          <td><input type="text" id="s2g" value="${senyData.Semester2[index]}" class="w-full px-4 py-2 inputBG focus:outline-none focus:bg-gray-700 transition duration-200"></td>
         `;
         subjectRows.appendChild(row);
       });
