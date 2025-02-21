@@ -24,18 +24,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     const email = document.getElementById("email"); 
     
     //parent information
-    const mother = document.getElementById("mother-name").value;
-    const surname2 = document.getElementById("mother-surname").value;
-    const mob = document.getElementById("mother-mobile").value;
-    const email2 = document.getElementById("mother-email").value;
-    const legace = document.getElementById("mother-undergraduate").value;
-    const garduate = document.getElementById("mother-graduate").value;
-    const father = document.getElementById("father-name").value;
-    const fsur = document.getElementById("father-surname").value;
-    const fno = document.getElementById("father-mobile").value;
-    const femail = document.getElementById("father-email").value;
-    const flegace = document.getElementById("father-undergraduate").value;
-    const fgrad = document.getElementById("father-graduate").value;
+    const mother = document.getElementById("mother-name");
+    const surname2 = document.getElementById("mother-surname");
+    const mob = document.getElementById("mother-mobile");
+    const email2 = document.getElementById("mother-email");
+    const legace = document.getElementById("mother-undergraduate");
+    const garduate = document.getElementById("mother-graduate");
+    const father = document.getElementById("father-name");
+    const fsur = document.getElementById("father-surname");
+    const fno = document.getElementById("father-mobile");
+    const femail = document.getElementById("father-email");
+    const flegace = document.getElementById("father-undergraduate");
+    const fgrad = document.getElementById("father-graduate");
 
 
     // Fetch student data from Firestore
@@ -71,26 +71,25 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Fetch parent info from firebase
     try {
-        const persInfoDocRef = doc(db, `students/${userEmail}/StuInfo/info`);
+        const persInfoDocRef = doc(db, `students/${userEmail}/ParInfo/info`);
         const persInfoSnapshot = await getDoc(persInfoDocRef);
 
         if (persInfoSnapshot.exists()) {
         const persInfoData = persInfoSnapshot.data();
             console.log(persInfoData);
-        // Pre-fill form fields
-        firstName.value = persInfoData.fname || "";
-        middleName.value = persInfoData.mname || "";
-        surname.value = persInfoData.sname || "";
-        dob.value = persInfoData.dob || "";
-        nationality.value = persInfoData.origin1 || "";
-        nationality2.value = persInfoData.origin2 || "";
-        address.value = persInfoData.add || "";
-        street.value = persInfoData.street || "";
-        city.value = persInfoData.city || "";
-        zipcode.value = persInfoData.zipcode || "";
-        country.value = persInfoData.country || "";
-        mobileno.value = persInfoData.mobileno || "";
-        email.value = persInfoData.email || "";
+        // // Pre-fill form fields
+        mother.value = persInfoData.Mother || "";
+        surname2.value = persInfoData.Surname || "";
+        mob.value = persInfoData.Mob || "";
+        email2.value = persInfoData.Email || "";
+        legace.value = persInfoData.Flegace || "";
+        garduate.value = persInfoData.Garduate || "";
+        father.value = persInfoData.Father || "";
+        fsur.value = persInfoData.fsurname || "";
+        fno.value = persInfoData.fmob || "";
+        femail.value = persInfoData.Femail || "";
+        flegace.value = persInfoData.Flegace || "";
+        fgrad.value = persInfoData.fgarduate || "";
         
 
         } else {
